@@ -5,6 +5,8 @@ import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerAddComponent } from './customer-add/customer-add.component';
 import { RouterModule, Routes } from '@angular/router';
+import { StoreModule } from "@ngrx/store";
+import { customerReducer } from "./state/customer.reducer";
 
 const customerRoutes: Routes = [{ path: "", component: CustomerComponent }];
 
@@ -18,7 +20,8 @@ const customerRoutes: Routes = [{ path: "", component: CustomerComponent }];
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(customerRoutes)
+    RouterModule.forChild(customerRoutes),
+    StoreModule.forFeature("customers",customerReducer)
   ]
 })
 export class CustomersModule { }
