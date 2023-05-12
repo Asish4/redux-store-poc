@@ -14,7 +14,9 @@ const initialState = {
 };
 
 export function customerReducer(state = initialState, action: { type: any; }) {
+    console.log(action.type);
     switch (action.type) {
+        
         case "LOAD_CUSTOMERS": {
             return {
                 ...state,
