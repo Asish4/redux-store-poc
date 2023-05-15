@@ -21,12 +21,15 @@ export function customerReducer(state = initialState, action: { type: any; }) {
             return {
                 ...state,
                 loading: true,
-                loaded: false
+                loaded: false  
             };
         }
-
+ 
         default: {
             return state;
         }
     }
 }
+
+
+
