@@ -1,6 +1,7 @@
 import { state } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { Store } from "@ngrx/store";
+import * as customerActions from "../state/customer.actions";
 @Component({
   selector: 'app-customer-list',
   templateUrl: './customer-list.component.html',
@@ -13,8 +14,10 @@ export class CustomerListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.store.dispatch({type:'LOAD_CUSTOMERS'}) 
+    // this.store.dispatch({type:'LOAD_CUSTOMERS'}) 
+    // this.store.subscribe(state=>(this.customers=state.customers.customers))
+    this.store.dispatch(new customerActions.LoadCustomers())
     this.store.subscribe(state=>(this.customers=state.customers.customers))
-    
+
   }
 }

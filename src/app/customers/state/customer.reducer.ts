@@ -1,4 +1,3 @@
-
 // const initialState = {
 //     customers: [
 //         {
@@ -79,14 +78,11 @@ export function customerReducer(state = initialState, action: customerActions.ac
               loading: false,
               loaded: false,
               error: action.payload
-            }
+            }  
           } 
 
           default:{
             return state;
           }
-
-
-
  }
 }
