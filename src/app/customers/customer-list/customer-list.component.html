@@ -15,7 +15,7 @@
     </tr> -->
     <tr>
         
-    <tr *ngFor="let customer of customers">
+    <tr *ngFor="let customer of (customers$|async)">
       <th scope="row">{{customer.name}}</th>
       <td>{{customer.phone}}</td>
       <td>{{customer.address}}</td>
