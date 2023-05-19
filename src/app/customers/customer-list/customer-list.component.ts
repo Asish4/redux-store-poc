@@ -22,6 +22,7 @@ export class CustomerListComponent implements OnInit {
     // this.store.dispatch({type:'LOAD_CUSTOMERS'}) 
     // this.store.subscribe(state=>(this.customers=state.customers.customers))
     this.store.dispatch(new customerActions.LoadCustomers())
+    console.log("ht");
     this.customers$ = this.store.pipe(select(fromCustomer.getCustomers));
 
   }

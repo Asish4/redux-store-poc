@@ -23,6 +23,7 @@ export class LoadCustomersFail implements Action {
 
     constructor(public payload: string) {}
 }
+console.log("action");
 
 export type action = LoadCustomers | LoadCustomersSuccess | LoadCustomersFail;
 

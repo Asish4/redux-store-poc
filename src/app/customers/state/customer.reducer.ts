@@ -56,6 +56,9 @@ export const initialState: CustomerState = {
 
 export function customerReducer(state = initialState, action: customerActions.action): CustomerState {
 
+  console.log("type tttt",action.type);
+  
+
     switch (action.type) {
         case customerActions.CustomerActionTypes.LOAD_CUSTOMERS: {
           return{

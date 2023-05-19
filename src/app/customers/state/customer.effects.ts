@@ -22,6 +22,7 @@ export class CustomerEffect{
           this.customerService.getCustomers().pipe(
             map(
               (customers: Customer[]) =>
+
                 new customerActions.LoadCustomersSuccess(customers)
             ),
             catchError(err => of(new customerActions.LoadCustomersFail(err)))
