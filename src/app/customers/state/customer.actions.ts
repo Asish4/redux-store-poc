@@ -6,7 +6,7 @@ export enum CustomerActionTypes{
 
     LOAD_CUSTOMERS = "[Customer] Load Customers",
     LOAD_CUSTOMERS_SUCCESS = "[Customer] Load Customers Success",
-    LOAD_CUSTOMERS_FAIL = "[Customer] Load Customers Fail"
+    LOAD_CUSTOMERS_FAIL = "[Customer] Load Customers Fail",
     LOAD_CUSTOMER = "[Customer] Load Customer",
     LOAD_CUSTOMER_SUCCESS = "[Customer] Load Customer Success",
     LOAD_CUSTOMER_FAIL = "[Customer] Load Customer Fail",
@@ -20,7 +20,7 @@ export enum CustomerActionTypes{
     DELETE_CUSTOMER_SUCCESS = "[Customer] Delete Customer Success",
     DELETE_CUSTOMER_FAIL = "[Customer] Delete Customer Fail"
 
-}
+} 
 
 export class LoadCustomers implements Action {
     readonly type = CustomerActionTypes.LOAD_CUSTOMERS;
@@ -111,7 +111,7 @@ export class LoadCustomer implements Action {
     constructor(public payload: string) {}
   }
   
-  export type Action =
+  export type action =
     | LoadCustomers
     | LoadCustomersSuccess
     | LoadCustomersFail

@@ -39,7 +39,7 @@ import { EntityState, EntityAdapter, createEntityAdapter } from "@ngrx/entity";
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 
 export interface CustomerState extends EntityState<Customer> {
-    selectedCustomerId: number | null;
+    selectedCustomerId: number;
     loading: boolean;
     loaded: boolean;
     error: string;
@@ -55,7 +55,7 @@ export const customerAdapter: EntityAdapter<Customer> = createEntityAdapter<Cust
 export const defaultCustomer: CustomerState={
   ids: [],
   entities: {},
-  selectedCustomerId: null,
+  selectedCustomerId: 0, 
   loading: false,
   loaded: false,
   error: ""
@@ -69,31 +69,66 @@ export function customerReducer(state = initialState, action: customerActions.ac
   console.log("type tttt",action.type);
   
 
-    switch (action.type) {
-        case customerActions.CustomerActionTypes.LOAD_CUSTOMERS: {
-          return{
-            ...state,
-            loaded: true
-          }
-        } 
+  switch (action.type) {
+    case customerActions.CustomerActionTypes.LOAD_CUSTOMERS_SUCCESS: {
+      return customerAdapter.addMany(action.payload, {
+        ...state,
+        loading: false,
+        loaded: true
+      });
+    }
+    case customerActions.CustomerActionTypes.LOAD_CUSTOMERS_FAIL: {
+      return {
+        ...state,
+        entities: {},
+        loading: false,
+        loaded: false,
+        error: action.payload
+      };
+    }
 
-        case customerActions.CustomerActionTypes.LOAD_CUSTOMERS_SUCCESS: {
-          return customerAdapter.setAll(action.payload, {
-            ...state,
-            loading: false,
-            loaded: true
-          });
-          } 
+    case customerActions.CustomerActionTypes.LOAD_CUSTOMER_SUCCESS: {
+      return customerAdapter.addOne(action.payload, {
+        ...state,
+        selectedCustomerId: action.payload.id
+      });
+    }
+    case customerActions.CustomerActionTypes.LOAD_CUSTOMER_FAIL: {
+      return {
+        ...state,
+        error: action.payload
+      };
+    }
 
-        case customerActions.CustomerActionTypes.LOAD_CUSTOMERS_FAIL: {
-            return{
-              ...state,
-              entities: {},
-              loading: false,
-              loaded: false,
-              error: action.payload
-            }  
-          } 
+    case customerActions.CustomerActionTypes.CREATE_CUSTOMER_SUCCESS: {
+      return customerAdapter.addOne(action.payload, state);
+    }
+    case customerActions.CustomerActionTypes.CREATE_CUSTOMER_FAIL: {
+      return {
+        ...state,
+        error: action.payload
+      };
+    }
+
+    case customerActions.CustomerActionTypes.UPDATE_CUSTOMER_SUCCESS: {
+      return customerAdapter.updateOne(action.payload, state);
+    }
+    case customerActions.CustomerActionTypes.UPDATE_CUSTOMER_FAIL: {
+      return {
+        ...state,
+        error: action.payload
+      };
+    }
+
+    case customerActions.CustomerActionTypes.DELETE_CUSTOMER_SUCCESS: {
+      return customerAdapter.removeOne(action.payload, state);
+    }
+    case customerActions.CustomerActionTypes.DELETE_CUSTOMER_FAIL: {
+      return {
+        ...state,
+        error: action.payload
+      };
+    }
 
           default:{
             return state;
@@ -126,6 +161,15 @@ export const getCustomersSelector = createSelector(
   (state:CustomerState)=>state.error
 )
 
+export const getCurrentCustomerId = createSelector(
+  getCustomerFeatureState,
+  (state: CustomerState) => state.selectedCustomerId
+);
+export const getCurrentCustomer = createSelector(
+  getCustomerFeatureState,
+  getCurrentCustomerId,
+  state => state.entities[state.selectedCustomerId]
+);
 
 
 
