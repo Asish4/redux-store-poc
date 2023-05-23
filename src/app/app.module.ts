@@ -11,7 +11,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from "@angular/common/http";
 import { environment } from 'src/environments/environment';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +24,8 @@ import { environment } from 'src/environments/environment';
     BrowserModule,
     AppRoutingModule,
     StoreDevtoolsModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot({}),
     HttpClientModule,
