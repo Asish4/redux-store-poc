@@ -41,7 +41,6 @@ export class LoadCustomersFail implements Action {
 
 export class LoadCustomer implements Action {
     readonly type = CustomerActionTypes.LOAD_CUSTOMER;
-  
     constructor(public payload: number) {}
   }
   

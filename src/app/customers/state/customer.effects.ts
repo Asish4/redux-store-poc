@@ -32,7 +32,7 @@ export class CustomerEffect{
     );
 
     
-  loadCustomer$: Observable<Action> = this.actions$.pipe(
+  loadCustomer$= createEffect(() =>this.actions$.pipe(
     ofType<customerActions.LoadCustomer>(
       customerActions.CustomerActionTypes.LOAD_CUSTOMER
     ),
@@ -45,10 +45,11 @@ export class CustomerEffect{
         catchError(err => of(new customerActions.LoadCustomerFail(err)))
       )
     )
+  )
   );
 
   
-  createCustomer$: Observable<Action> = this.actions$.pipe(
+  createCustomer$= createEffect(() => this.actions$.pipe(
     ofType<customerActions.CreateCustomer>(
       customerActions.CustomerActionTypes.CREATE_CUSTOMER
     ),
@@ -62,10 +63,11 @@ export class CustomerEffect{
         catchError(err => of(new customerActions.CreateCustomerFail(err)))
       )
     )
+  )
   );
 
   
-  updateCustomer$: Observable<Action> = this.actions$.pipe(
+  updateCustomer$= createEffect(() => this.actions$.pipe(
     ofType<customerActions.UpdateCustomer>(
       customerActions.CustomerActionTypes.UPDATE_CUSTOMER
     ),
@@ -82,10 +84,11 @@ export class CustomerEffect{
         catchError(err => of(new customerActions.UpdateCustomerFail(err)))
       )
     )
+  )
   );
 
 
-  deleteCustomer$: Observable<Action> = this.actions$.pipe(
+  deleteCustomer$= createEffect(() =>this.actions$.pipe(
     ofType<customerActions.DeleteCustomer>(
       customerActions.CustomerActionTypes.DELETE_CUSTOMER
     ),
@@ -96,5 +99,6 @@ export class CustomerEffect{
         catchError(err => of(new customerActions.DeleteCustomerFail(err)))
       )
     )
+  )
   );
 }

@@ -11,7 +11,7 @@ import { Customer } from "../customer.model";
 @Component({
   selector: 'app-customer-edit',
   templateUrl: './customer-edit.component.html',
-  styleUrls: ['./customer-edit.component.css']
+  styleUrls: ['./customer-edit.component.scss']
 })
 export class CustomerEditComponent implements OnInit {
   customerForm:any = FormGroup;

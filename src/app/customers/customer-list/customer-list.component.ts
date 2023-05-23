@@ -41,11 +41,11 @@ import { Customer } from "../customer.model";
 @Component({
   selector: "app-customer-list",
   templateUrl: "./customer-list.component.html",
-  styleUrls: ["./customer-list.component.css"]
+  styleUrls: ["./customer-list.component.scss"]
 })
 export class CustomerListComponent implements OnInit {
-  customers$: Observable<Customer[]>;
-  error$: Observable<String>;
+  customers$: Observable<Customer[]> | undefined;
+  error$: Observable<String> | undefined;
 
   constructor(private store: Store<fromCustomer.AppState>) {}
 
@@ -62,6 +62,10 @@ export class CustomerListComponent implements OnInit {
   }
 
   editCustomer(customer: Customer) {
+    console.log("edit ts");
+    console.log("idddd",customer.id);
+    
+    
     this.store.dispatch(new customerActions.LoadCustomer(customer.id));
   }
 }

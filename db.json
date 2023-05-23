@@ -1,26 +1,25 @@
 {
-    "customers": [
-      {
-        "name": "John Doe",
-        "phone": "910928392098",
-        "address": "123 Sun Street",
-        "membership": "Platinum",
-        "id": 1
-      },
-      {
-        "name": "Mary Johnson",
-        "phone": "808937482734",
-        "address": "893 Main Voulevard",
-        "membership": "Pro",
-        "id": 2
-      },
-      {
-        "name": "Asish Patra",
-        "phone": "7477880634",
-        "address": "Mohanpur",
-        "membership": "Basic",
-        "id": 3
-      }
-
-    ]
-  }
+  "customers": [
+    {
+      "name": "John Doefdgd",
+      "phone": "91092839209877",
+      "address": "123 Sun S",
+      "membership": "Pro",
+      "id": 1
+    },
+    {
+      "name": "Asish Patra",
+      "phone": "7477880634",
+      "address": "Mohanpur",
+      "membership": "Basic",
+      "id": 3
+    },
+    {
+      "name": "gfng",
+      "phone": "77",
+      "address": "g",
+      "membership": "Platinum",
+      "id": 4
+    }
+  ]
+}

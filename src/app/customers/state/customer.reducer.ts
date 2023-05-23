@@ -131,6 +131,9 @@ export function customerReducer(state = initialState, action: customerActions.ac
     }
 
           default:{
+            console.log("deflt");
+            console.log(state);
+            
             return state;
           }
  }
@@ -156,7 +159,7 @@ export const getCustomersLoaded = createSelector(
   (state:CustomerState)=>state.loaded
 )
 
-export const getCustomersSelector = createSelector(
+export const getError = createSelector(
   getCustomerFeatureState,
   (state:CustomerState)=>state.error
 )
@@ -172,4 +175,8 @@ export const getCurrentCustomer = createSelector(
 );
 
 
+
+// export function getError(getError: any): import("rxjs").OperatorFunction<AppState, any> {
+//   throw new Error("Function not implemented.");
+// }
 
